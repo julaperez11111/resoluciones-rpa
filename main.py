@@ -4,7 +4,7 @@ import re
 import os
 
 def main(template_file, template_data, folder_name):
-    with open(template_data) as f:
+    with open(template_data, encoding='utf-8') as f:
         data = json.load(f)
     document = Document(template_file)
     paragraphs = document.paragraphs
@@ -12,7 +12,9 @@ def main(template_file, template_data, folder_name):
         for key in data:
             match = re.search(key, paragraph.text)
             if match:
-                paragraph.text = paragraph.text.replace(key, data[key])
+                ## paragraph.text = paragraph.text.replace(key, data[key])
+                for element in paragraph.runs:
+                    element.text = element.text.replace(key, data[key])
     document.save(".\\outputs\\" + folder_name + "\\" + "archivo.docx")
 
 if __name__ == "__main__":
