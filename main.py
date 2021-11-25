@@ -1,33 +1,34 @@
 import json
-import os
 from document_object import document_object
 from fill_template import fill_template
+from dataAdapter import dataAdapter
 import argparse
 
-def main(template_file, template_data, folder_name):
-    with open(template_data, encoding='utf-8') as f:
-        data = json.load(f)
+# template_data es un string en formato json que debe ser parseado
+def main(template_file, template_data):
+    # TODO: Validacion de los datos
     document = document_object(template_file)
-    fill_template(document, data, folder_name)
+    json_template_data = template_data.replace("'", "\"")
+    data = json.loads(json_template_data)
+    dictPortada = dataAdapter(data)
+    fill_template(document, dictPortada)
 
 if __name__ == "__main__":
     ## debe tener un archivo.docx, la extension es importante
     ## y debe tener un archivo data.json que es como los datos que van
     parser = argparse.ArgumentParser(description='Description.')
-    parser.add_argument('-t', "--template-folder", type=str, dest="template_folder",
-                        help='template_folder')
-    parser.add_argument('-d', "--data-file", type=str, dest="data_file",
-                        help='data_file')
-    parser.add_argument('-f', "--file-name", type=str, dest="file_name",
-                        help='file_name')
+    parser.add_argument('-t', "--template-file", type=str, dest="template_file",
+                        help='template_file')
+    parser.add_argument('-d', "--data", type=str, dest="data",
+                        help='data que sera procesada')
     
     args = parser.parse_args()
     ## folder_name es args.template_folder = "portada"
     ## args.data_file = "data.json"
     ## args.file_name = "archivo.docx"
-    folder_name = args.template_folder
-    template_folder = os.getcwd() + "\\templates\\" + folder_name
-    template_file = template_folder + "\\" + args.file_name
-    template_data = template_folder + "\\" + args.data_file
+    template_file = args.template_file
+    # template_folder = os.getcwd() + "\\templates\\" + "portada"
+    ## template_file = template_folder + "\\" + args.file_name
+    template_data = args.data
 
-    main(template_file, template_data, folder_name)
+    main(template_file, template_data)
