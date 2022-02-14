@@ -1,13 +1,14 @@
 import re
 
 # carpeta de destino para los archivos generados
-target_destination = "C:\\desarrollo\\rpa_resoluciones\\outputs\\"
+target_destination = "C:\\desarrollo\\resoluciones-rpa\\outputs\\"
 
 ## fill_template.py es una función que recibe un objecto de documento
 ## de python-docx, y un diccionario y en su proceso reemplaza los valores
 ## del diccionario en el documento.
 ## Al final entrega los documentos con los datos del diccionario
 def fill_template(document, data, file_name):
+    print("[INFO] Llenando el archivo template", file_name)
     paragraphs = document.paragraphs
     for paragraph in paragraphs:
         for key in data:

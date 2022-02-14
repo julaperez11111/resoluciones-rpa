@@ -1,4 +1,5 @@
 def resolucionAdapter(data):
+    print("[INFO] Adaptando archivo de resolucion")
     dictAdapter = {}
     dictAdapter["###RESOLUCION###"] = data["resolucion"]
     dictAdapter["###FECHA_RESOLUCION###"] = data["fechaResolucion"]

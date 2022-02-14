@@ -10,14 +10,15 @@ from adapters import portada, formulacion, apertura, resolucion
 
 def main(template_data):
     # TODO: Validacion de los datos
+    print("[INFO] Iniciando procesamiento")
     portadaDoc = document_object(
-        "C:\\desarrollo\\rpa_resoluciones\\templates\\PORTADA.docx")
+        "C:\\desarrollo\\resoluciones-rpa\\templates\\PORTADA.docx")
     formulacionDoc = document_object(
-        "C:\\desarrollo\\rpa_resoluciones\\templates\\FORMULACION.docx")
+        "C:\\desarrollo\\resoluciones-rpa\\templates\\FORMULACION.docx")
     aperturaDoc = document_object(
-        "C:\\desarrollo\\rpa_resoluciones\\templates\\APERTURA.docx")
+        "C:\\desarrollo\\resoluciones-rpa\\templates\\APERTURA.docx")
     resolucionDoc = document_object(
-        "C:\\desarrollo\\rpa_resoluciones\\templates\\RESOLUCION.docx")
+        "C:\\desarrollo\\resoluciones-rpa\\templates\\RESOLUCION.docx")
     json_template_data = template_data.replace("'", "\"")
     data = json.loads(json_template_data)
 

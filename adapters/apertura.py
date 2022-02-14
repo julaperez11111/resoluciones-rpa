@@ -1,4 +1,5 @@
 def aperturaAdapter(data):
+    print("[INFO] Adaptando archivo apertura")
     dictAdapter = {}
     dictAdapter["###FECHA###"] = data["fecha"]
     dictAdapter["###AUTO_APERTURA###"] = data["autoApertura"]

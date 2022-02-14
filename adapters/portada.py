@@ -1,4 +1,5 @@
 def portadaAdapter(data):
+    print("[INFO] Adaptando archivo de portada")
     dictAdapter = {}
     dictAdapter["###NAME_PORTADA###"] = data["nombres"]
     dictAdapter["###FECHA###"] = data["fecha"]

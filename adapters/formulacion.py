@@ -1,4 +1,5 @@
 def formulacionAdapter(data):
+    print("[INFO] Adaptando archivo de formulacion")
     dictAdapter = {}
     dictAdapter["###FECHA###"] = data["fecha"]
     dictAdapter["###AUTO_APERTURA###"] = data["autoApertura"]
